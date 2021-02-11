@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FriendBox from "./FriendBox";
-import { Button } from "@chakra-ui/react";
+import { Button, Container } from "@chakra-ui/react";
 
 function Friends(props) {
     const [friends, setFriends] = useState([])
@@ -9,14 +9,14 @@ function Friends(props) {
         setFriends([{ email: "test@test.com" }, { email: "ihwlaen, fwlkddabwoibo@test.com" }])
     }, [])
     return (
-        <div>
-            <Button colorScheme="teal" variant="solid" onClick={props.onToggle}>
+        <Container>
+            <Button colorScheme="teal" variant="solid" onClick={props.onToggle} pos="right">
                 Invite
             </Button>
             {friends.map((friend) => (
                 <FriendBox friend={friend}/>
             ))}
-        </div>
+        </Container>
     )
 }
 

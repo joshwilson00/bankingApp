@@ -1,5 +1,5 @@
 import React from "react";
-import { Slide, Box, Text } from "@chakra-ui/react";
+import { Slide, Box, Text, Button, Input } from "@chakra-ui/react";
 function InviteBanner(props) {
     return (
         <Slide direction="bottom" in={props.open} style={{ zIndex: 10 }}>
@@ -11,7 +11,12 @@ function InviteBanner(props) {
           rounded="md"
           shadow="md"
         >
-          <Text>Invite a friend today! When you invite someone to join, you get £5 for free!</Text>
+            <Box>
+                <Text>Invite a friend today! When you invite someone to join, you get £5 for free!
+                <Input placeholder="email@email.com" maxWidth="md" marginLeft="3" bgColor="white" />
+                <Button marginLeft="2" bgGradient="linear(to-r, red.500,orange.500)" _hover={{ bgGradient: "linear(to-r, red.500,orange.500)" }}>Invite!</Button>
+                </Text>
+            </Box>
         </Box>
       </Slide>
     )
