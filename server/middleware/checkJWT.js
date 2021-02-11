@@ -1,5 +1,4 @@
 require('dotenv').config()
-require('dotenv').config()
 import jwt from "express-jwt";
 import jwks from "jwks-rsa";
 const jwtCheck = jwt({
