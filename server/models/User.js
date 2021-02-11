@@ -8,16 +8,19 @@ const UserSchema = new Schema({
         require: true,
     },
     balance: {
-        type: Float32Array,
-        required: true
+        type: Number,
+        required: true,
+        default: 0,
     },
     transactions: {
         type: Array,
         required: false,
+        default: [],
     },
     friends: {
         type: Array,
         required: false,
+        default: [],
     }
 });
 
