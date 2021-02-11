@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import { Auth0Provider } from "@auth0/auth0-react";
 import reportWebVitals from './reportWebVitals';
+import { ChakraProvider } from "@chakra-ui/react"
 require('dotenv').config()
 
 ReactDOM.render(
@@ -12,7 +12,9 @@ ReactDOM.render(
     clientId={process.env.REACT_APP_AUTH0_CLIENT}
     redirectUri={window.location.origin}
   >
-    <App />
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
   </Auth0Provider>,
   document.getElementById('root')
 );
