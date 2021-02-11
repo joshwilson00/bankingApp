@@ -13,9 +13,7 @@ app.use(express.json());
 
 app.use(jwtCheck);
 
-app.get('/', (req, res) =>{
-    console.log(process.env.AUTH0_DOMAIN);
-    res.send({message: "hello"})})
+app.get('/', (req, res) =>{res.send({message: "hello"})})
 
   
 
