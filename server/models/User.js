@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     balance: {
         type: Number,
         required: true,
-        default: 0,
+        default: 100,
     },
     transactions: {
         type: Array,
