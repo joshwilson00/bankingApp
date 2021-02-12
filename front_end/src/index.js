@@ -11,6 +11,8 @@ ReactDOM.render(
     domain={process.env.REACT_APP_AUTH0_DOMAIN}
     clientId={process.env.REACT_APP_AUTH0_CLIENT}
     redirectUri={window.location.origin}
+    scope="openid email profile"
+    audience={process.env.REACT_APP_AUTH0_AUDIENCE}
   >
     <ChakraProvider>
       <App />
