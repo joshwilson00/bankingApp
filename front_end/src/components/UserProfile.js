@@ -14,7 +14,7 @@ const UserProfile = ({ bankUser }) => {
       <Container>
         <Heading size="xl">Your Profile</Heading>
         <Text fontSize="2xl">Welcome, {user.name}</Text>
-        <Text fontSize="1xl">Your Balance: {bankUser.balance}</Text>
+        <Text fontSize="1xl">Your Balance: £{bankUser.balance.toFixed(2)}</Text>
         <Box marginTop="5">
           <Heading size="2md">Referral Code</Heading>
           <Text fontSize="md">Were you referred by another user? Enter the referral code found in your email, to get both you and your friend, £5!</Text>
