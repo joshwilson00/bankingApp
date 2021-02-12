@@ -5,6 +5,7 @@ import cors from "cors";
 import User from "./models/User";
 import jwtCheck from "./middleware/checkJWT";
 import signupController from "./controllers/signupController";
+import inviteController from "./controllers/inviteController";
 import sendMoneyController from "./controllers/sendMoneyController";
 
 const app = express();
@@ -26,6 +27,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/signup", signupController);
+
+app.post('/invite', inviteController);
 
 app.post("/send", sendMoneyController)
 
