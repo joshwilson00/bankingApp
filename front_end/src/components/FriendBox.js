@@ -1,11 +1,10 @@
-import { Button, Box, Badge } from "@chakra-ui/react"
+import { Button, Box, Badge, Text } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
 export default function FriendBox(props) {
     const [friend, setFriend] = useState({})
 
     useEffect(() => {
-        console.log(props.friend)
         setFriend(props.friend)
     }, [props.friend])
   
@@ -17,7 +16,7 @@ export default function FriendBox(props) {
               Friend
             </Badge>
             <Box marginLeft="2">
-            {friend.email}
+              <Text>{friend.toString()}</Text>
             <Button marginLeft="2" size="sm">Send Money</Button>
             </Box>
           </Box>        

@@ -42,7 +42,6 @@ function App() {
     fetchSignup();
   }, [fetchSignup])
 
-
     return (
       <Box>
       <Navbar />
@@ -58,7 +57,7 @@ function App() {
             </GridItem>
             <GridItem>
               <Heading size="xl">Your Friends</Heading>
-              <Friends onToggle={slideUp.onToggle} />
+              <Friends onToggle={slideUp.onToggle} friends={bankUser.friends}/>
             </GridItem>
           </Grid>
           <InviteBanner open={slideUp.isOpen} />
