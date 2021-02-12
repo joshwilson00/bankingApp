@@ -18,9 +18,8 @@ function App() {
     if (isAuthenticated) {
       try {
         const t = await getAccessTokenSilently();
-  
         const response = await fetch(
-          `${process.env.REACT_APP_SERVER}/signup`,
+          `/signup`,
           {
             method: 'POST',
             headers: {
