@@ -20,7 +20,7 @@ function App() {
         const t = await getAccessTokenSilently();
   
         const response = await fetch(
-          `${process.env.REACT_APP_SERVER}/signup`,
+          `/signup`,
           {
             method: 'POST',
             headers: {
@@ -29,9 +29,7 @@ function App() {
             },
             body: JSON.stringify({ email: user.email })
           }
-        );
-        const responseData = await response.json();
-        setBankUser(responseData.user)
+        ).then((res)=>res.json()).then(res=> setBankUser(res.user));
       } catch (error) {
         console.error(error)
       }

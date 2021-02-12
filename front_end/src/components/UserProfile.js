@@ -9,6 +9,7 @@ const UserProfile = ({ bankUser }) => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
+  console.log('User',bankUser)
   return (
     isAuthenticated && (
       <Container>
