@@ -7,6 +7,7 @@ import jwtCheck from "./middleware/checkJWT";
 import signupController from "./controllers/signupController";
 import inviteController from "./controllers/inviteController";
 import sendMoneyController from "./controllers/sendMoneyController";
+import getFriendController from "./controllers/getFriendController";
 
 const app = express();
 app.use(cors());
@@ -30,7 +31,9 @@ app.post("/signup", signupController);
 
 app.post('/invite', inviteController);
 
-app.post("/send", sendMoneyController)
+app.post("/send", sendMoneyController);
+
+app.get("/getFriend", getFriendController);
 
 app.listen(process.env.PORT, () => {
   console.log(`Listenting on PORT ${process.env.PORT}`);

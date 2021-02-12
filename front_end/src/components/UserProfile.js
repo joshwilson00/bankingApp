@@ -10,7 +10,7 @@ const UserProfile = ({ bankUser }) => {
     return <div>Loading ...</div>;
   }
   return (
-    isAuthenticated && (
+    isAuthenticated && !isLoading && (
       <Container>
         <Heading size="xl">Your Profile</Heading>
         <Text fontSize="2xl">Welcome, {user.name}</Text>
