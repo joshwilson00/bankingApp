@@ -6,11 +6,42 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TransactionsTable from './components/Transactions';
 import Friends from './components/Friends';
 import InviteBanner from './components/InviteBanner';
+import { useCallback, useEffect, useState } from 'react';
 
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const slideUp = useDisclosure();
+  const [bankUser, setBankUser] = useState({})
+
+  const fetchSignup = useCallback(async () => {
+    if (isAuthenticated) {
+      try {
+        const t = await getAccessTokenSilently();
+  
+        const response = await fetch(
+          `${process.env.REACT_APP_SERVER}/signup`,
+          {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${t}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: user.email })
+          }
+        );
+        const responseData = await response.json();
+        setBankUser(responseData.user)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  }, [isAuthenticated, user, getAccessTokenSilently]);
+
+  useEffect(() => {
+    fetchSignup();
+  }, [fetchSignup])
+
 
     return (
       <Box>
@@ -19,7 +50,7 @@ function App() {
         <>
           <Grid templateColumns="repeat(3, 1fr)" gap={6}>
             <GridItem>
-              <UserProfile />
+              <UserProfile bankUser={bankUser} />
             </GridItem>
             <GridItem>
               <Heading size="xl">Recent Transactions</Heading>
