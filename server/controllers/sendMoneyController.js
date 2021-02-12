@@ -2,11 +2,11 @@ import User from '../models/User';
 
 export default (req, res) => {
     if (!req.body.sendTo) {
-        res.send(400).json({ err: "You must specify a person to send to"});
+        res.status(400).json({ err: "You must specify a person to send to"});
         return;
     }
     if (req.body.amount < 0) {
-        res.send(400).json({ err: "You must specify a positive number to send"});
+        res.status(400).json({ err: "You must specify a positive number to send"});
         return;
     }
     // Check Users both exist
@@ -42,7 +42,7 @@ function updateBalances(req, res) {
                 res.sendStatus(500);
                 return;
             }
-            res.send(200).json({user: doc})
+            res.status(200).json({user: doc})
         })
     })
 }

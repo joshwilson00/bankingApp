@@ -20,7 +20,7 @@ function App() {
         const t = await getAccessTokenSilently();
   
         const response = await fetch(
-          `${process.env.REACT_APP_SERVER}/signup`,
+          `/signup`,
           {
             method: 'POST',
             headers: {
@@ -57,7 +57,7 @@ function App() {
             </GridItem>
             <GridItem>
               <Heading size="xl">Your Friends</Heading>
-              <Friends onToggle={slideUp.onToggle} friends={bankUser.friends}/>
+              <Friends onToggle={slideUp.onToggle} friends={bankUser.friends} update={fetchSignup}/>
             </GridItem>
           </Grid>
           <InviteBanner open={slideUp.isOpen} />

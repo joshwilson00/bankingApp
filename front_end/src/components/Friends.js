@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
+import SendBanner from "./SendBanner";
 import FriendBox from "./FriendBox";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, Container, Text } from "@chakra-ui/react";
+import { Button, Container, Text, useDisclosure } from "@chakra-ui/react";
 
-function Friends({ onToggle, friends}) {
-    const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
+function Friends({ onToggle, friends, update }) {
+    const { isAuthenticated, getAccessTokenSilently } = useAuth0();
     const [loadedFriends, setLoadedFriends] = useState([]);
+    const [toUser, setToUser] = useState("");
     const [loaded, setLoaded] = useState(false);
+    const slideUp = useDisclosure();
 
     useEffect(() => {
         if (friends) {
             console.log(friends)
             async function getFriends() {
+                await setLoadedFriends([]);
                 if (isAuthenticated) {
                     try {
                         friends.forEach(async (element) => {
@@ -41,7 +45,12 @@ function Friends({ onToggle, friends}) {
             }
             getFriends();
         }
-    }, [friends, getAccessTokenSilently, isAuthenticated])
+    }, [friends, getAccessTokenSilently, isAuthenticated]);
+
+    const bringSendBox = (to) => {
+        slideUp.onToggle();
+        setToUser(to);
+    }
 
     if (!loaded) {
         return (
@@ -56,8 +65,9 @@ function Friends({ onToggle, friends}) {
                 Invite
             </Button>
             {loadedFriends.map((e) => (
-                <FriendBox friend={e} key={e}/>
+                <FriendBox friend={e} key={e} toggleBox={bringSendBox}/>
             ))}
+            <SendBanner to={toUser} open={slideUp.isOpen} toggleBox={bringSendBox} update={update}/>
         </Container>
     )
     

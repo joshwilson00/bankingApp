@@ -17,7 +17,7 @@ export default function FriendBox(props) {
             </Badge>
             <Box marginLeft="2">
               <Text>{friend.toString()}</Text>
-            <Button marginLeft="2" size="sm">Send Money</Button>
+            <Button marginLeft="2" size="sm" onClick={() => props.toggleBox(friend.toString())}>Send Money</Button>
             </Box>
           </Box>        
         </Box>
