@@ -18,7 +18,6 @@ function App() {
     if (isAuthenticated) {
       try {
         const t = await getAccessTokenSilently();
-  
         const response = await fetch(
           `/signup`,
           {

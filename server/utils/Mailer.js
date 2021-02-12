@@ -24,10 +24,7 @@ class Mailer {
             replyTo: 'no-reply@bankingApp.com'
         }
 
-        this.transport.sendMail(email, (err, result) => {
-            if (err) console.log(err)
-            else console.log(result);
-        })
+        this.transport.sendMail(email)
     }
 }
 
