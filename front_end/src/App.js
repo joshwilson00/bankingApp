@@ -18,7 +18,6 @@ function App() {
     if (isAuthenticated) {
       try {
         const t = await getAccessTokenSilently();
-  
         const response = await fetch(
           `/signup`,
           {
@@ -29,7 +28,9 @@ function App() {
             },
             body: JSON.stringify({ email: user.email })
           }
-        ).then((res)=>res.json()).then(res=> setBankUser(res.user));
+        );
+        const responseData = await response.json();
+        setBankUser(responseData.user)
       } catch (error) {
         console.error(error)
       }

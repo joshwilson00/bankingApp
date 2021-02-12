@@ -14,7 +14,6 @@ function InviteBanner(props) {
   const [success, setSuccess] = useState(false);
   const [email, setEmail] = useState("");
   const handleChange = (e) => {
-    console.log(e.target.value);
     setEmail(e.target.value);
   };
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
@@ -22,8 +21,6 @@ function InviteBanner(props) {
     if (isAuthenticated) {
       try {
         const t = await getAccessTokenSilently();
-        console.log(t);
-        console.log(email);
         const response = await fetch(`/invite`, {
           method: "POST",
           headers: {
@@ -32,7 +29,6 @@ function InviteBanner(props) {
           },
           body: JSON.stringify({ from: user.email, to: email }),
         });
-        console.log(response)
         if(response.status===200) setSuccess(true);
         else setSuccess(false);
       } catch (error) {
